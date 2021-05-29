@@ -14,13 +14,12 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not category.save, 'Saved Category without category_name'
     end
   test 'should create a new Category' do
+    category = Category.all
   end
 
   test 'can edit a Category' do
   end
 
-  test 'can delete an empty Category' do
-  end
 
 end
 
