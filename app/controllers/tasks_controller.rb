@@ -1,6 +1,16 @@
 class TasksController < ApplicationController
+  # before_action :fetch_category
+  
   def index
-    @tasks = Task.all
+    @categories = Category.all
+
+    category_1 = params[:category_1]
+
+    if !category_1.nil?
+      @tasks = Task.where(:category_id => category_1)
+    else
+      @tasks = Task.all
+    end
   end
   
   def show
@@ -14,7 +24,8 @@ class TasksController < ApplicationController
   def create
     @task = Task.create(task_params)
 
-    if @task.save
+    if @task.valid?
+      @task.save
       redirect_to @task
     else
       render :new
@@ -43,6 +54,10 @@ class TasksController < ApplicationController
   
   private
   def task_params
-    params.require(:task).permit(:task_name,:task_details)
+    params.require(:task).permit(:task_name,:task_details, :category_id)
   end
+
+  # def fetch_category
+  #   @category = Category.find(params[:category_id])
+  # end
 end

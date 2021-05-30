@@ -5,5 +5,8 @@
 <%= f.label :task_details %>
 <%= f.text_area :task_details %>
 
+<%= f.select :category_id, Category.all.map { |c| [c.category_name, c.id]} %>
+
 <%= f.submit %>
+
 <% end %>

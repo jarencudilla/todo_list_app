@@ -12,14 +12,19 @@ class CategoryTest < ActiveSupport::TestCase
     category = Category.all
   
     assert_not category.save, 'Saved Category without category_name'
-    end
-  test 'should create a new Category' do
-    category = Category.all
   end
 
-  test 'can edit a Category' do
+  test 'edit Category' do
+   endtest 'category should save' do
+    category = Category.new
+    category.category_name = "undefined"
+    assert category.save, 'Changes did not save'
+   end
   end
 
-
+  test 'update category ' do
+    category = @category
+    category.category_name = "undefined"
+    assert category.save, 'Changes did not save'
+  end
 end
-
