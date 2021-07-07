@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  # before_action :fetch_category
+  before_action :fetch_category
   
   def index
     @categories = Category.all
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
     params.require(:task).permit(:task_name,:task_details, :category_id)
   end
 
-  # def fetch_category
-  #   @category = Category.find(params[:category_id])
-  # end
+  def fetch_category
+    @category = Category.find(params[:category_id])
+  end
 end
